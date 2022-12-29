@@ -7,6 +7,9 @@ $color-grey-dark-1: hsl(234, 12%, 34%);
 $color-grey-dark-2: hsl(229, 6%, 66%);
 $color-grey-light: hsl(0, 0%, 98%);
 
+$bp-1: 56.25em; // 900px
+$bp-2: 31.25em; // 500px
+
 *,
 *::after,
 *::before {
@@ -48,6 +51,11 @@ video {
   flex-direction: column;
   row-gap: 4rem;
 
+  @media only screen and (max-width: $bp-1) {
+    margin: 5rem 1rem;
+    row-gap: 6rem;
+  }
+
   &__top {
     display: flex;
     flex-direction: column;
@@ -60,39 +68,109 @@ video {
     color: $color-grey-dark-2;
     text-align: center;
     width: 45%;
+
+    @media only screen and (max-width: $bp-1) {
+      width: 100%;
+    }
   }
 
   &__bottom {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
+
+    @media only screen and (max-width: $bp-1) {
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+    }
   }
 
   &__box {
-    padding: 2rem;
-    box-shadow: 0 3.5rem 5rem $color-grey-dark-2;
+    padding: 3rem;
+    box-shadow: 0 2rem 2rem rgba($color-grey-dark-1, 0.2);
+    border-radius: 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (max-width: $bp-1) {
+      width: 70%;
+    }
+
+    @media only screen and (max-width: $bp-2) {
+      width: 100%;
+    }
 
     &--1 {
+      background: linear-gradient($color-cyan, $color-cyan) top / 100% 0.5rem;
+      background-repeat: no-repeat;
+
       grid-row: 1 / span 2;
       align-self: center;
+
+      @media only screen and (max-width: $bp-1) {
+        grid-row: unset;
+        align-items: unset;
+      }
+    }
+
+    &--2 {
+      background: linear-gradient($color-red, $color-red) top / 100% 0.5rem;
+      background-repeat: no-repeat;
     }
 
     &--3 {
+      background: linear-gradient($color-orange, $color-orange) top / 100%
+        0.5rem;
+      background-repeat: no-repeat;
+
       grid-row: 2 / span 1;
       grid-column: 2 / span 1;
+
+      @media only screen and (max-width: $bp-1) {
+        grid-row: unset;
+        grid-column: unset;
+      }
     }
 
     &--4 {
+      background: linear-gradient($color-blue, $color-blue) top / 100% 0.5rem;
+      background-repeat: no-repeat;
+
       grid-row: 1 / span 2;
       align-self: center;
+
+      @media only screen and (max-width: $bp-1) {
+        grid-row: unset;
+        align-self: unset;
+      }
     }
+  }
+
+  &__icon {
+    width: 5rem;
+    margin-top: 4.5rem;
+    margin-left: auto;
+  }
+
+  &__text {
+    color: $color-grey-dark-2;
+    font-weight: 200;
   }
 }
 
 .heading-1 {
   font-size: 3.5rem;
 
+  @media only screen and (max-width: $bp-2) {
+    font-size: 2.5rem;
+  }
+
   &--normal {
     font-weight: 200;
   }
+}
+
+.heading-2 {
+  color: $color-grey-dark-1;
 }
